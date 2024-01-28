@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 function About(props) {
+
+  const [myStyle,setMyStyle] = useState({
+    color:'white',
+    backgroundColor:'black'
+  })
+
+  const [btnText,setBtnText] = useState("Enable Dark Mode")
+
+  const toggleStyle = ()=>{
+
+      if (myStyle.color === 'white'){
+
+        setMyStyle({
+          color:'black',
+          backgroundColor:'white'
+        })
+      }
+
+      else{
+
+        setMyStyle({
+          color:'white',
+          backgroundColor:'black'
+        })
+
+      }
+  }
+
   return (
     <div>
+      <div className="container" style={myStyle}>
+        <h1>About Us</h1>
         <div className="accordion" id="accordionExample">
-  <div className="accordion-item">
+  <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header">
       <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Accordion Item #1
@@ -17,7 +47,7 @@ function About(props) {
       </div>
     </div>
   </div>
-  <div className="accordion-item">
+  <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header">
       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         Accordion Item #2
@@ -29,7 +59,7 @@ function About(props) {
       </div>
     </div>
   </div>
-  <div className="accordion-item">
+  <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header">
       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Accordion Item #3
@@ -42,8 +72,11 @@ function About(props) {
     </div>
   </div>
 </div>
-      
+<button type="button" className="btn btn-primary" onClick={toggleStyle}>{btnText}</button>
     </div>
+    
+    </div>
+    
   )
 }
 

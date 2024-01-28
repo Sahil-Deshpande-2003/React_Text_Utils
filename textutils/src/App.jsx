@@ -5,6 +5,8 @@ import './App.css'
 import Navbar from "./components/Navbar"
 import Textform from "./components/Textform"
 import About from './components/About'
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// Switch ke jagah Routes
 function App() {
   const [mode, setMode] = useState('light')
 
@@ -25,13 +27,18 @@ function App() {
 
   return (
     <>
-
+   <Router>
     <Navbar mode={mode} toggleMode={toggleMode}/>
 
-    {/* <Textform/> */}
-
-    <About/>
      
+     <Routes>
+        <Route exact path="/" element={<Textform />} />
+        <Route exact path="/about" element={<About mode={mode} toggleMode={toggleMode} />} />
+       
+        </Routes>
+   
+
+    </Router>
     </>
   )
 }
